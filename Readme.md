@@ -2,7 +2,7 @@
 
 # How to start?
 
-    1. run server `go run cmd/main.go`
+    1. run server `main.exe`
     2. run FE `start templates/index.html`
 
 # Flow

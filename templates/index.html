@@ -24,7 +24,7 @@
         function joinRoom(roomId, username, roomName) {
             console.log(`Joining room ${roomId} as ${username}`);
             // Redirect to chat.html with room ID and username
-            window.location.href = `chat.html?roomId=${roomId}&username=${encodeURIComponent(username)}&roomName=${roomName}`;
+            window.location.href = `chat.html?roomId=${roomId}&username=${encodeURIComponent(username)}&roomName=${encodeURIComponent(roomName)}`;
         }
 
         function openCreateRoomModal() {
