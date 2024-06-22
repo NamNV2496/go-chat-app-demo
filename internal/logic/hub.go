@@ -21,12 +21,14 @@ func NewHub() *Hub {
 		Name:    "Tám chuyện xuyên biên giới",
 		Clients: make(map[string]*Client),
 		LastMsg: "Room was created at 2024-06-20 10:42:22.6076085 +0700 +07 m=+45.546873001",
+		Public:  1,
 	}
 	rooms["room456"] = &Room{
 		ID:      "room456",
 		Name:    "Coding interview",
 		Clients: make(map[string]*Client),
 		LastMsg: "Room was created at 2024-06-20 10:42:22.6076085 +0700 +07 m=+45.546873001",
+		Public:  1,
 	}
 	return &Hub{
 		Rooms:      rooms,
@@ -44,7 +46,7 @@ func (h *Hub) Run() {
 			if _, ok := h.Rooms[cl.RoomID]; ok {
 				r := h.Rooms[cl.RoomID]
 
-				if _, ok := r.Clients[cl.ID]; !ok {
+				if client, ok := r.Clients[cl.ID]; !ok || client.Conn == nil {
 					r.Clients[cl.ID] = cl
 				}
 				for _, msg := range h.Rooms[cl.RoomID].OldMsg {

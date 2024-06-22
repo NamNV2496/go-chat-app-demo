@@ -15,6 +15,8 @@
         <h2>Create New Room</h2>
         <input type="text" id="room-id-input" placeholder="Enter room id">
         <input type="text" id="room-name-input" placeholder="Enter room name">
+        <input type="text" id="room-member-input" placeholder="Enter member names">
+        <input type="checkbox" id="room-public-input">
         <button id="submit_room">Create Room</button>
     </div>
 </div>
@@ -42,7 +44,7 @@
             const username = document.getElementById('message-input').value.trim();
             if (username !== '') {
                 // Fetch rooms from API
-                fetch('http://localhost:8080/ws/getRooms')
+                fetch(`http://localhost:8080/ws/getRooms?username=${encodeURIComponent(username)}`)
                     .then(response => response.json())
                     .then(data => {
                         const roomsDiv = document.getElementById('rooms');
@@ -91,15 +93,28 @@
 
         // Handle create room form submission
         document.getElementById('submit_room').addEventListener('click', function() {
-            const roomName = document.getElementById('room-name-input').value.trim();
             const roomId = document.getElementById('room-id-input').value.trim();
+            const roomName = document.getElementById('room-name-input').value.trim();
+            const memberValue = document.getElementById('room-member-input').value.trim();
+            var members = memberValue.split(',')
+            var checkbox = document.getElementById("room-public-input");
+            var visible = checkbox.checked ? 1 : 0;
+            console.log("Tesst: ", visible)
             if (roomName !== '') {
+                const requestBody = {
+                    "roomId": roomId,
+                    "roomName": roomName,
+                    "public": parseInt(visible),
+                    "member": members
+                };
+                console.log("Tesst: ", requestBody)
                 // Call API to create room
-                fetch(`http://localhost:8080/ws/createRoom?roomId=${roomId}&roomName=${encodeURIComponent(roomName)}`, {
+                fetch(`http://localhost:8080/ws/createRoom`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
+                    body: JSON.stringify(requestBody)
                 })
                     .then(response => {
                         if (response.ok) {
