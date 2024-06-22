@@ -50,15 +50,15 @@ func (h *Handler) JoinRoom(c *gin.Context) {
 		fmt.Println("Error when create new client")
 		return
 	}
-	notifyMsg := &logic.Message{
-		Content:  "Hello, I'm new member. Nice to join room!",
-		RoomID:   newClient.RoomID,
-		Username: newClient.Username,
-	}
+	// notifyMsg := &logic.Message{
+	// 	Content:  "Hello, I'm new member. Nice to join room!",
+	// 	RoomID:   newClient.RoomID,
+	// 	Username: newClient.Username,
+	// }
 	// register new client
 	h.hub.Register <- newClient
 	// send a broadcast message
-	h.hub.Broadcast <- notifyMsg
+	// h.hub.Broadcast <- notifyMsg
 
 	// write new message
 	go newClient.WriteMessage()

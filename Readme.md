@@ -16,11 +16,11 @@ The latest message always is updated to show user
 Old message also was stored to display new user (maximum config from code is `MaxLengthOldMsg = 50`)
 ![alt text](docs/image-1.png)
 
-Leave message
-![alt text](docs/image-2.png)
-
 Register new chat room
 ![alt text](docs/image-3.png)
 
-Multiple real-time chatting
-![alt text](docs/image4.png)
+Inbox
+![alt text](docs/image5.png)
+
+private chat room
+![alt text](docs/image6.png)

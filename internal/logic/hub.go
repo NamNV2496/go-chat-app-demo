@@ -2,7 +2,6 @@ package logic
 
 import (
 	"fmt"
-	"time"
 )
 
 type Hub struct {
@@ -68,13 +67,13 @@ func (h *Hub) Run() {
 		case cl := <-h.Unregister:
 			if _, ok := h.Rooms[cl.RoomID]; ok {
 				if _, ok := h.Rooms[cl.RoomID].Clients[cl.ID]; ok {
-					if len(h.Rooms[cl.RoomID].Clients) != 0 {
-						h.Broadcast <- &Message{
-							Content:  cl.Username + " left the chat! at " + time.Now().String(),
-							RoomID:   cl.RoomID,
-							Username: cl.Username,
-						}
-					}
+					// if len(h.Rooms[cl.RoomID].Clients) != 0 {
+					// h.Broadcast <- &Message{
+					// 	Content:  cl.Username + " left the chat! at " + time.Now().String(),
+					// 	RoomID:   cl.RoomID,
+					// 	Username: cl.Username,
+					// }
+					// }
 
 					delete(h.Rooms[cl.RoomID].Clients, cl.ID)
 					close(cl.Message)
