@@ -100,3 +100,17 @@ func (h *Handler) GetRooms(c *gin.Context) {
 
 	c.JSON(http.StatusOK, rooms)
 }
+
+func (h *Handler) GetMembers(c *gin.Context) {
+	username := c.Query("username")
+	roomId := c.Query("roomId")
+
+	room := h.hub.Rooms[roomId]
+	for _, member := range room.Members {
+		if member == username {
+			c.JSON(http.StatusOK, gin.H{"member": room.Members})
+			return
+		}
+	}
+	c.JSON(http.StatusOK, gin.H{})
+}

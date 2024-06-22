@@ -42,6 +42,7 @@
         // Get username from input
         document.getElementById('submit_name').addEventListener('click', function() {
             const username = document.getElementById('message-input').value.trim();
+            sessionStorage.setItem('username', username);
             if (username !== '') {
                 // Fetch rooms from API
                 fetch(`http://localhost:8080/ws/getRooms?username=${encodeURIComponent(username)}`)

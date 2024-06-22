@@ -45,6 +45,17 @@ func (h *Hub) Run() {
 			fmt.Println("Have a new member joined room: ", cl.RoomID, " with name: ", cl.Username)
 			if _, ok := h.Rooms[cl.RoomID]; ok {
 				r := h.Rooms[cl.RoomID]
+				memebers := r.Members
+				var exist bool = false
+				for _, mem := range memebers {
+					if mem == cl.Username {
+						exist = true
+					}
+				}
+				if !exist {
+					memebers = append(memebers, cl.Username)
+					r.Members = memebers
+				}
 
 				if client, ok := r.Clients[cl.ID]; !ok || client.Conn == nil {
 					r.Clients[cl.ID] = cl
