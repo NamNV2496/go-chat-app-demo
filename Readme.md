@@ -1,5 +1,10 @@
 # A basic chat app is implemented by Golang + websocket
 
+# Technologies
+
+    1. websocket - "github.com/gorilla/websocket"
+    2. Gin - "github.com/gin-gonic/gin"
+
 # How to start?
 
     1. run server `main.exe`

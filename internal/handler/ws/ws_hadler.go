@@ -34,6 +34,9 @@ func (h *Handler) CreateRoom(c *gin.Context) {
 		return
 	}
 
+	if _, ok := h.hub.Rooms[roomRequest.RoomId]; ok {
+		return
+	}
 	h.hub.Rooms[roomRequest.RoomId] = &logic.Room{
 		ID:      roomRequest.RoomId,
 		Name:    roomRequest.RoomName,

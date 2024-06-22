@@ -1,0 +1,110 @@
+{
+	"info": {
+		"_postman_id": "b23cc357-577b-462b-963f-35a78826f7d3",
+		"name": "go-chat",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. create new chat room",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/ws/createRoom?roomId=room123&roomName=chat_cho_vui",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ws",
+						"createRoom"
+					],
+					"query": [
+						{
+							"key": "roomId",
+							"value": "room123"
+						},
+						{
+							"key": "roomName",
+							"value": "chat_cho_vui"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. get rooms",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/ws/getRooms",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ws",
+						"getRooms"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3. join room",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/ws/joinRoom/room123",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ws",
+						"joinRoom",
+						"room123"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4. get member",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/ws/getMembers?username=namnv&roomId=room123",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ws",
+						"getMembers"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "namnv"
+						},
+						{
+							"key": "roomId",
+							"value": "room123"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
